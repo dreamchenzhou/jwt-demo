@@ -7,6 +7,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * @author yong.chen
@@ -29,6 +30,7 @@ public class JwtUtils {
                 withClaim("loginName","admin").
                 withIssuer(issuer).
                 withIssuedAt(new Date()).
+                withJWTId(UUID.randomUUID().toString()).
                 sign(algorithm);
         return token;
     }
@@ -36,7 +38,6 @@ public class JwtUtils {
     public static DecodedJWT decodeToken(String token){
         Algorithm algorithm =Algorithm.HMAC256(secret);
         JWTVerifier jwtVerifier= JWT.require(algorithm).withIssuer(issuer).build();
-
         DecodedJWT decodedJWT= jwtVerifier.verify(token);
         return decodedJWT;
     }

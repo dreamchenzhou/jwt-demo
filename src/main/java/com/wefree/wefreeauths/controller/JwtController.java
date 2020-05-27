@@ -21,7 +21,6 @@ public class JwtController {
     @GetMapping("/createToken")
     public String createToken(){
         Calendar calendar =Calendar.getInstance();
-        Date date = calendar.getTime();
         return JwtUtils.buildToken();
     }
 

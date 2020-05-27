@@ -1,2 +1,9 @@
+
 server:
   port: 8004
+
+
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
